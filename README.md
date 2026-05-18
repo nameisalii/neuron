@@ -66,21 +66,6 @@ When two sources say different things, Neuron catches it before anyone acts on w
 
 ---
 
-## Tech Stack
-
-| Layer | Technology |
-|---|---|
-| Frontend | Next.js 14, TypeScript, Tailwind CSS |
-| Backend | Node.js API + Python extraction pipeline |
-| LLM | Anthropic Claude API (claude-sonnet-4-5) |
-| Database | PostgreSQL via Prisma |
-| Vector DB | Pinecone |
-| Auth | Clerk |
-| Email | Resend |
-| Hosting | Vercel + Railway |
-
----
-
 ## Project Status
 
 🚧 **Early stage — actively building.**
