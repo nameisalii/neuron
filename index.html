@@ -106,6 +106,136 @@ nav.scrolled{box-shadow:0 1px 16px rgba(20,18,16,0.06)}
 }
 .scroll-line{width:0.5px;height:48px;background:linear-gradient(to bottom,var(--ink3),transparent);animation:scrollPulse 2s ease-in-out infinite}
 
+/* SETUP BADGE */
+.hero-setup{
+  margin-top:.875rem;
+  font-family:'DM Mono',monospace;font-size:11px;
+  color:var(--ink3);letter-spacing:.06em;
+  opacity:0;animation:fadeUp .8s .85s forwards;
+  display:flex;align-items:center;gap:6px;
+}
+.hero-setup::before{content:'';width:16px;height:0.5px;background:var(--ink3)}
+.hero-setup::after{content:'';width:16px;height:0.5px;background:var(--ink3)}
+
+/* SCROLLING QUESTIONS STRIP */
+.questions-strip-wrap{
+  background:var(--cream2);
+  padding:5rem 3rem 5rem;
+}
+.questions-strip-header{
+  text-align:center;margin-bottom:3rem;
+}
+.questions-strip-header .strip-label{
+  font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--ink3);
+  display:inline-flex;align-items:center;justify-content:center;gap:12px;
+  margin-bottom:1rem;
+}
+.questions-strip-header .strip-label::before,.questions-strip-header .strip-label::after{
+  content:'';display:block;width:32px;height:0.5px;background:var(--ink3);
+}
+.questions-strip-header h2{
+  font-family:'Playfair Display',serif;font-weight:900;
+  font-size:clamp(32px,4vw,52px);color:var(--ink);
+  letter-spacing:-0.02em;line-height:1.1;
+}
+.questions-strip-header h2 em{font-style:italic;color:var(--accent)}
+.questions-strip{
+  background:var(--cream2);
+  padding:0;overflow:hidden;
+  display:grid;grid-template-columns:1fr 1fr 1fr;
+  gap:1.25rem;height:780px;
+  position:relative;
+}
+.questions-strip::before,.questions-strip::after{
+  content:'';position:absolute;left:0;right:0;z-index:3;pointer-events:none;
+  height:140px;
+}
+.questions-strip::before{top:0;background:linear-gradient(to bottom,var(--cream2),transparent)}
+.questions-strip::after{bottom:0;background:linear-gradient(to top,var(--cream2),transparent)}
+.q-col{
+  display:flex;flex-direction:column;gap:.75rem;
+  overflow:hidden;position:relative;
+}
+.q-track{
+  display:flex;flex-direction:column;gap:.75rem;
+  animation:scrollQ linear infinite;
+}
+.q-col:nth-child(1) .q-track{animation-direction:normal;animation-duration:30s}
+.q-col:nth-child(2) .q-track{animation-direction:reverse;animation-duration:36s}
+.q-col:nth-child(3) .q-track{animation-direction:normal;animation-duration:26s}
+@keyframes scrollQ{
+  0%{transform:translateY(0)}
+  100%{transform:translateY(-50%)}
+}
+.q-bubble{
+  background:var(--cream3);
+  border:0.5px solid var(--border);
+  border-radius:18px;
+  padding:1.5rem 1.625rem;
+  display:flex;flex-direction:column;gap:.875rem;
+  flex-shrink:0;
+  transition:box-shadow .2s,border-color .2s;
+  position:relative;
+}
+.q-bubble::before{
+  content:'';
+  position:absolute;top:0;left:0;right:0;height:2px;
+  border-radius:18px 18px 0 0;
+  background:var(--accent);
+  transform:scaleX(0);transform-origin:left;
+  transition:transform .3s ease;
+}
+.q-bubble:hover{box-shadow:0 6px 24px rgba(20,18,16,0.08);border-color:rgba(20,18,16,0.15)}
+.q-bubble:hover::before{transform:scaleX(1)}
+.q-header{display:flex;align-items:center;gap:12px}
+.q-av{display:none}
+.q-meta strong{font-size:14px;font-weight:500;color:var(--ink);display:block;line-height:1.3;font-family:'Playfair Display',serif}
+.q-meta span{font-size:11px;color:var(--ink3);font-family:'DM Mono',monospace;letter-spacing:.03em}
+.q-text{font-size:14px;color:var(--ink2);line-height:1.7;font-weight:300}
+
+/* HERO INTEGRATIONS */
+.hero-integrations{
+  margin-top:3rem;
+  display:flex;align-items:center;justify-content:center;
+  opacity:0;animation:fadeUp .8s 1s forwards;
+}
+.hero-int-logos{display:flex;align-items:center;gap:2.75rem;flex-wrap:wrap;justify-content:center}
+.hero-int-item{
+  display:flex;align-items:center;gap:10px;
+  font-size:15px;font-weight:400;color:var(--ink2);
+}
+.hero-int-item svg{flex-shrink:0}
+
+/* HOW IT WORKS */
+.howworks-grid{
+  display:grid;grid-template-columns:1fr 1fr 1fr;
+  gap:1px;background:var(--border);
+  border:1px solid var(--border);border-radius:16px;overflow:hidden;
+}
+.hw-card{
+  background:var(--cream3);padding:2rem;
+  transition:background .2s;
+}
+.hw-card:hover{background:white}
+.hw-visual{
+  margin-bottom:1.5rem;
+  background:var(--cream2);border-radius:10px;
+  overflow:hidden;display:flex;align-items:center;justify-content:center;
+  padding:1rem;
+}
+.hw-label{
+  font-family:'DM Mono',monospace;font-size:10px;
+  letter-spacing:.12em;text-transform:uppercase;
+  color:var(--ink3);margin-bottom:.625rem;
+}
+.hw-title{
+  font-family:'Playfair Display',serif;
+  font-size:18px;font-weight:700;color:var(--ink);
+  margin-bottom:.625rem;line-height:1.3;
+}
+.hw-desc{font-size:13px;color:var(--ink3);line-height:1.7;font-weight:300}
+
 /* E — section dividers */
 .section-divider{height:1px;background:linear-gradient(to right,transparent,var(--border),transparent);margin:0 3rem}
 .section-divider-dark{height:1px;background:linear-gradient(to right,transparent,rgba(245,240,232,0.1),transparent);margin:0 3rem}
@@ -241,6 +371,12 @@ footer{background:var(--navy);padding:64px 3rem 40px}
   .features-left{position:relative;top:auto}
   .problems-grid{grid-template-columns:1fr}
   .section-divider,.section-divider-dark{margin:0 1.25rem}
+  .howworks-grid{grid-template-columns:1fr}
+  .hero-integrations{gap:.75rem}
+  .hero-int-logos{gap:.75rem}
+  .questions-strip-wrap{padding:2rem 1.25rem 0}
+  .questions-strip{grid-template-columns:1fr;height:320px}
+  .q-col:nth-child(2),.q-col:nth-child(3){display:none}
 }
 </style>
 </head>
@@ -265,10 +401,58 @@ footer{background:var(--navy);padding:64px 3rem 40px}
   <h1 class="hero-h1">Your company knows more than it <em>can show.</em></h1>
   <p class="hero-sub" id="heroSub">Neuron captures how your company works — and makes it instantly available to everyone who needs it.</p>
   <div class="hero-cta"><button onclick="openJoin()">Join the Waitlist →</button></div>
+
+  <!-- INTEGRATION LOGOS -->
+  <div class="hero-integrations">
+    <div class="hero-int-logos">
+      <!-- Slack -->
+      <div class="hero-int-item">
+        <svg width="34" height="34" viewBox="0 0 54 54" fill="none"><path d="M19.7 33.8a4.1 4.1 0 1 1-4.1-4.1H19.7v4.1z" fill="#E01E5A"/><path d="M21.8 33.8a4.1 4.1 0 0 1 8.2 0v10.3a4.1 4.1 0 1 1-8.2 0V33.8z" fill="#E01E5A"/><path d="M25.9 19.7a4.1 4.1 0 1 1 4.1-4.1V19.7H25.9z" fill="#36C5F0"/><path d="M25.9 21.8a4.1 4.1 0 0 1 0 8.2H15.6a4.1 4.1 0 1 1 0-8.2h10.3z" fill="#36C5F0"/><path d="M40 25.9a4.1 4.1 0 1 1 4.1 4.1H40V25.9z" fill="#2EB67D"/><path d="M37.9 25.9a4.1 4.1 0 0 1-8.2 0V15.6a4.1 4.1 0 1 1 8.2 0v10.3z" fill="#2EB67D"/><path d="M33.8 40a4.1 4.1 0 1 1-4.1 4.1V40h4.1z" fill="#ECB22E"/><path d="M33.8 37.9a4.1 4.1 0 0 1 0-8.2h10.3a4.1 4.1 0 1 1 0 8.2H33.8z" fill="#ECB22E"/></svg>
+        <span>Slack</span>
+      </div>
+      <!-- Notion -->
+      <div class="hero-int-item">
+        <svg width="34" height="34" viewBox="0 0 100 100" fill="none"><rect width="100" height="100" rx="12" fill="white" stroke="#E5E5E5" stroke-width="1"/><path d="M14 13.5c3.2 2.6 4.4 2.4 10.4 2L67.9 12.8c1.1 0 .1-.9-.4-1.1L61 8c-1.2-1-2.9-2.1-6.1-1.8L12.7 9.5c-1.6.1-1.9 1-1.2 1.7l2.5 2.3zM17 23v56.3c0 3 1.5 4.2 5 3.9l51.5-3c3.5-.2 4.4-2.2 4.4-4.7V19.8c0-2.5-1-3.7-3.2-3.5l-54.3 3.2c-2.4.2-3.4 1.4-3.4 3.5zm50.6 2.5c.4 1.6 0 3.3-1.6 3.4l-2.7.2v39.8c-2.3 1.2-4.4 2-6.3 2-2.9 0-3.6-.9-5.8-3.7L33.7 41.7v29L40 72s0 3.3-4.6 3.6l-12.7.7c-.4-.8 0-2.8 1.4-3.2l3.3-1V35.4L23.4 35c-.4-1.6.6-3.9 3.3-4.1l13.7-.9 18.7 28.6V32.5l-4.9-.5c-.4-2 1.1-3.6 3.2-3.8l13.2-.7z" fill="#141210"/></svg>
+        <span>Notion</span>
+      </div>
+      <!-- Google Docs -->
+      <div class="hero-int-item">
+        <svg width="34" height="34" viewBox="0 0 48 48" fill="none"><path d="M30 2H10C7.8 2 6 3.8 6 6v36c0 2.2 1.8 4 4 4h28c2.2 0 4-1.8 4-4V14L30 2z" fill="#4285F4"/><path d="M30 2l12 12H30V2z" fill="#A8C7FA"/><rect x="14" y="22" width="20" height="2.5" rx="1.25" fill="white"/><rect x="14" y="28" width="20" height="2.5" rx="1.25" fill="white"/><rect x="14" y="34" width="14" height="2.5" rx="1.25" fill="white"/></svg>
+        <span>Google Docs</span>
+      </div>
+      <!-- Linear (new design — sphere with diagonal stripes) -->
+      <div class="hero-int-item">
+        <svg width="34" height="34" viewBox="0 0 48 48" fill="none"><defs><radialGradient id="linGrad" cx="35%" cy="25%"><stop offset="0%" stop-color="#3a3a3a"/><stop offset="100%" stop-color="#1a1a1a"/></radialGradient></defs><rect width="48" height="48" rx="8" fill="url(#linGrad)"/><circle cx="24" cy="24" r="14" fill="white" opacity=".96"/><g><rect x="11" y="20" width="26" height="2.5" rx="1.25" transform="rotate(-45 11 20)" fill="#1a1a1a"/><rect x="14" y="24" width="24" height="2.5" rx="1.25" transform="rotate(-45 14 24)" fill="#1a1a1a"/><rect x="17" y="28" width="20" height="2.5" rx="1.25" transform="rotate(-45 17 28)" fill="#1a1a1a"/></g><circle cx="24" cy="24" r="14" fill="none" stroke="url(#linGrad)" stroke-width="2"/></svg>
+        <span>Linear</span>
+      </div>
+      <!-- Telegram -->
+      <div class="hero-int-item">
+        <svg width="34" height="34" viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="24" fill="#29B6F6"/><path d="M35.8 13.2L10.3 23.1c-1.7.7-1.7 1.6-.3 2l6.4 2 14.8-9.3c.7-.4 1.3-.2.8.3L21.3 28.1l-.3 6.6c.4 0 .9-.2 1.2-.5l2.9-2.8 6 4.4c1.1.6 1.9.3 2.1-.9l3.8-18c.4-1.6-.6-2.3-1.2-1.7z" fill="white"/></svg>
+        <span>Telegram</span>
+      </div>
+      <!-- WhatsApp -->
+      <div class="hero-int-item">
+        <svg width="34" height="34" viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="24" fill="#25D366"/><path d="M34.5 13.4A14.7 14.7 0 0 0 24 9C16.3 9 10 15.3 10 23c0 2.5.7 4.9 1.9 7L10 38l8.3-1.9c2 1.1 4.3 1.7 6.7 1.7 7.7 0 14-6.3 14-14 0-3.7-1.5-7.2-4.5-10.4zM24 36.4c-2.2 0-4.3-.6-6.1-1.7l-.4-.3-4.9 1.1 1.1-4.8-.3-.4C12.3 28.4 11.6 25.7 11.6 23c0-6.8 5.6-12.4 12.4-12.4 3.3 0 6.4 1.3 8.7 3.6 2.3 2.3 3.6 5.4 3.6 8.8 0 6.8-5.6 12.4-12.3 12.4zm6.8-9.3c-.4-.2-2.2-1.1-2.6-1.2-.4-.1-.6-.2-.9.2-.3.4-1 1.2-1.2 1.5-.2.3-.5.3-.9.1-.4-.2-1.7-.6-3.2-2-1.2-1.1-2-2.4-2.2-2.8-.2-.4 0-.6.2-.8.2-.2.4-.5.6-.7.2-.2.2-.4.4-.6.1-.2 0-.5-.1-.7-.1-.2-1-2.4-1.3-3.3-.4-.9-.7-.7-.9-.8H17c-.3 0-.7.1-1 .5-.4.4-1.4 1.3-1.4 3.3s1.4 3.8 1.6 4.1c.2.3 2.8 4.3 6.9 6 1 .4 1.7.7 2.3.8.9.2 1.8.2 2.4.1.7-.1 2.2-.9 2.5-1.8.3-.9.3-1.6.2-1.8-.1-.2-.4-.3-.8-.5z" fill="white"/></svg>
+        <span>WhatsApp</span>
+      </div>
+      <!-- Cursor (new design — 3D cube with arrow) -->
+      <div class="hero-int-item">
+        <svg width="34" height="34" viewBox="0 0 48 48" fill="none"><rect width="48" height="48" rx="8" fill="#0a0a0a"/><g transform="translate(24 24)"><!-- back hex faces -->
+          <polygon points="-12,-6.9 0,-13.85 12,-6.9 12,6.9 0,13.85 -12,6.9" fill="#1f1f1f" stroke="#333" stroke-width=".5"/>
+          <polygon points="-12,-6.9 0,0 0,13.85 -12,6.9" fill="#2a2a2a"/>
+          <polygon points="12,-6.9 12,6.9 0,13.85 0,0" fill="#3a3a3a"/>
+          <!-- arrow / cursor inside -->
+          <polygon points="-9,-5 9,-5 0,0" fill="white" opacity=".95"/>
+          <polygon points="0,0 9,-5 0,12" fill="white" opacity=".75"/>
+          <polygon points="0,0 -9,-5 0,12" fill="white" opacity=".4"/>
+        </g></svg>
+        <span>Cursor</span>
+      </div>
+    </div>
+  </div>
+
   <div class="hero-scroll"><div class="scroll-line"></div></div>
 </section>
-
-<div class="section-divider"></div>
 
 <!-- ABOUT -->
 <section id="about">
@@ -315,25 +499,21 @@ footer{background:var(--navy);padding:64px 3rem 40px}
   <p class="section-sub reveal reveal-delay-2">These are not theoretical problems. They happen every day in every company — and they compound silently.</p>
   <div class="problems-grid">
     <div class="problem-card reveal">
-      <div class="problem-icon">🧠</div>
       <div class="problem-num">Problem 01</div>
       <h3>Knowledge lives in people's heads</h3>
       <p>Every rule and exception lives partly in someone's memory. When that person leaves — you find out the hard way what you didn't know you were missing.</p>
     </div>
     <div class="problem-card reveal reveal-delay-1">
-      <div class="problem-icon">🔄</div>
       <div class="problem-num">Problem 02</div>
       <h3>Onboarding takes months instead of days</h3>
       <p>New hires spend 3–6 months piecing together how your company works — interrupting teammates, reading outdated docs, and still getting things wrong.</p>
     </div>
     <div class="problem-card reveal">
-      <div class="problem-icon">🚪</div>
       <div class="problem-num">Problem 03</div>
       <h3>When someone leaves, their knowledge leaves too</h3>
       <p>That engineer who knew why the system was built that way. That support lead who handled edge cases nobody documented. Gone in two weeks notice, forever.</p>
     </div>
     <div class="problem-card reveal reveal-delay-1">
-      <div class="problem-icon">🤖</div>
       <div class="problem-num">Problem 04</div>
       <h3>AI agents hallucinate company facts</h3>
       <p>Your AI agents give confidently wrong answers about your actual policies — because they have no reliable access to how your company really works.</p>
@@ -343,9 +523,238 @@ footer{background:var(--navy);padding:64px 3rem 40px}
 
 <div class="section-divider"></div>
 
+<div class="section-divider"></div>
+
+<!-- SCROLLING QUESTIONS STRIP -->
+<div class="questions-strip-wrap">
+  <div class="questions-strip-header">
+    <div class="strip-label">02.5 — In their words</div>
+    <h2>Questions your team will <em>stop asking.</em></h2>
+  </div>
+  <div class="questions-strip" id="questionsStrip">
+
+  <!-- Column 1: scrolls up -->
+  <div class="q-col">
+    <div class="q-track" id="qtrack1">
+      <div class="q-bubble">
+        <div class="q-header"><div class="q-meta"><strong>Sara R.</strong><span>Support Lead</span></div></div>
+        <div class="q-text">What's our refund policy for damaged items over $500?</div>
+      </div>
+      <div class="q-bubble">
+        <div class="q-header"><div class="q-meta"><strong>John M.</strong><span>Engineering</span></div></div>
+        <div class="q-text">Why did we choose Redis over Postgres for sessions?</div>
+      </div>
+      <div class="q-bubble">
+        <div class="q-header"><div class="q-meta"><strong>New Hire</strong><span>Day 1</span></div></div>
+        <div class="q-text">How do I deploy to production? Nobody's around to ask.</div>
+      </div>
+      <div class="q-bubble">
+        <div class="q-header"><div class="q-meta"><strong>Dan K.</strong><span>Sales</span></div></div>
+        <div class="q-text">What's the maximum discount I can offer without approval?</div>
+      </div>
+      <div class="q-bubble">
+        <div class="q-header"><div class="q-meta"><strong>Lisa R.</strong><span>Finance</span></div></div>
+        <div class="q-text">Who signs off on vendor payments above $10K?</div>
+      </div>
+      <div class="q-bubble">
+        <div class="q-header"><div class="q-meta"><strong>Marcus H.</strong><span>Customer Success</span></div></div>
+        <div class="q-text">What's the SLA we've committed to for enterprise customers?</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Column 2: scrolls down (reverse) -->
+  <div class="q-col">
+    <div class="q-track" id="qtrack2">
+      <div class="q-bubble">
+        <div class="q-header"><div class="q-meta"><strong>Tom W.</strong><span>Engineering</span></div></div>
+        <div class="q-text">What did we decide about the auth service architecture last sprint?</div>
+      </div>
+      <div class="q-bubble">
+        <div class="q-header"><div class="q-meta"><strong>Amy C.</strong><span>Support</span></div></div>
+        <div class="q-text">Is the free trial 14 days or 30 days? I keep getting different answers.</div>
+      </div>
+      <div class="q-bubble">
+        <div class="q-header"><div class="q-meta"><strong>Sarah K.</strong><span>Head of Support</span></div></div>
+        <div class="q-text">What exceptions exist to the standard return policy?</div>
+      </div>
+      <div class="q-bubble">
+        <div class="q-header"><div class="q-meta"><strong>Chris R.</strong><span>Sales</span></div></div>
+        <div class="q-text">What's our positioning against Competitor X for the mid-market?</div>
+      </div>
+      <div class="q-bubble">
+        <div class="q-header"><div class="q-meta"><strong>Jane L.</strong><span>Product</span></div></div>
+        <div class="q-text">Whatever happened to the referral program we discussed in Q2?</div>
+      </div>
+      <div class="q-bubble">
+        <div class="q-header"><div class="q-meta"><strong>Ryan D.</strong><span>Operations</span></div></div>
+        <div class="q-text">What's the full process for onboarding a new enterprise client?</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Column 3: scrolls up (different speed) -->
+  <div class="q-col">
+    <div class="q-track" id="qtrack3">
+      <div class="q-bubble">
+        <div class="q-header"><div class="q-meta"><strong>Emma P.</strong><span>New Hire</span></div></div>
+        <div class="q-text">Who do I talk to about getting access to the data warehouse?</div>
+      </div>
+      <div class="q-bubble">
+        <div class="q-header"><div class="q-meta"><strong>Kevin S.</strong><span>Engineering</span></div></div>
+        <div class="q-text">What tests need to pass before we can merge to main?</div>
+      </div>
+      <div class="q-bubble">
+        <div class="q-header"><div class="q-meta"><strong>Nina A.</strong><span>Customer Success</span></div></div>
+        <div class="q-text">What's our policy for customers asking for a custom integration?</div>
+      </div>
+      <div class="q-bubble">
+        <div class="q-header"><div class="q-meta"><strong>Oliver L.</strong><span>Product</span></div></div>
+        <div class="q-text">Who has the most context on why we dropped feature X last year?</div>
+      </div>
+      <div class="q-bubble">
+        <div class="q-header"><div class="q-meta"><strong>Hamza T.</strong><span>Sales</span></div></div>
+        <div class="q-text">What's our unique insight about target customers in fintech?</div>
+      </div>
+      <div class="q-bubble">
+        <div class="q-header"><div class="q-meta"><strong>Zara R.</strong><span>Support</span></div></div>
+        <div class="q-text">What's the process for handling a chargeback dispute over $1K?</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+  </div><!-- end questions-strip -->
+</div><!-- end questions-strip-wrap -->
+
+
+<!-- HOW NEURON WORKS — 3 card visual section -->
+<section id="howworks" style="background:var(--cream3);padding:100px 3rem">
+  <div style="text-align:center;margin-bottom:4rem">
+    <div class="section-label reveal" style="justify-content:center;margin-bottom:1rem">03 — How it works</div>
+    <h2 class="section-h2 reveal reveal-delay-1" style="max-width:100%;text-align:center;font-size:clamp(32px,4vw,52px)">A brain that <em>learns silently</em>,<br>then shows up everywhere.</h2>
+    <p class="section-sub reveal reveal-delay-2" style="max-width:580px;margin:1rem auto 0;text-align:center">Neuron runs in the background of your existing workflow. No new tools, no training, no maintenance — just a verified company memory that grows every day.</p>
+  </div>
+  <div class="howworks-grid reveal">
+
+    <!-- Card 1: Listen -->
+    <div class="hw-card">
+      <div class="hw-visual">
+        <svg viewBox="0 0 280 200" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:180px">
+          <!-- Layered cards representing different sources -->
+          <rect x="40" y="35" width="200" height="50" rx="10" fill="white" stroke="#141210" stroke-width="1" transform="rotate(-2 140 60)"/>
+          <circle cx="60" cy="55" r="3" fill="#E01E5A" transform="rotate(-2 140 60)"/>
+          <rect x="72" y="48" width="80" height="3" rx="1.5" fill="#141210" opacity=".5" transform="rotate(-2 140 60)"/>
+          <rect x="72" y="58" width="120" height="3" rx="1.5" fill="#141210" opacity=".25" transform="rotate(-2 140 60)"/>
+          <rect x="72" y="66" width="60" height="3" rx="1.5" fill="#141210" opacity=".2" transform="rotate(-2 140 60)"/>
+
+          <rect x="50" y="75" width="200" height="50" rx="10" fill="white" stroke="#141210" stroke-width="1" transform="rotate(1 150 100)"/>
+          <circle cx="70" cy="95" r="3" fill="#4285F4" transform="rotate(1 150 100)"/>
+          <rect x="82" y="88" width="100" height="3" rx="1.5" fill="#141210" opacity=".5" transform="rotate(1 150 100)"/>
+          <rect x="82" y="98" width="140" height="3" rx="1.5" fill="#141210" opacity=".25" transform="rotate(1 150 100)"/>
+          <rect x="82" y="106" width="80" height="3" rx="1.5" fill="#141210" opacity=".2" transform="rotate(1 150 100)"/>
+
+          <rect x="35" y="115" width="200" height="50" rx="10" fill="white" stroke="#141210" stroke-width="1" transform="rotate(-1 135 140)"/>
+          <circle cx="55" cy="135" r="3" fill="#C8401A" transform="rotate(-1 135 140)"/>
+          <rect x="67" y="128" width="70" height="3" rx="1.5" fill="#141210" opacity=".5" transform="rotate(-1 135 140)"/>
+          <rect x="67" y="138" width="130" height="3" rx="1.5" fill="#141210" opacity=".25" transform="rotate(-1 135 140)"/>
+          <rect x="67" y="146" width="90" height="3" rx="1.5" fill="#141210" opacity=".2" transform="rotate(-1 135 140)"/>
+
+          <!-- Subtle scanning line effect -->
+          <rect x="0" y="98" width="280" height="0.5" fill="#C8401A" opacity=".4"/>
+        </svg>
+      </div>
+      <div class="hw-label">Step 01</div>
+      <h3 class="hw-title">It listens to everything</h3>
+      <p class="hw-desc">Slack threads. Notion edits. GitHub PRs. Calls. Docs. Neuron observes the work your team already does — no new habits, no manual logging.</p>
+    </div>
+
+    <!-- Card 2: Understand -->
+    <div class="hw-card">
+      <div class="hw-visual">
+        <svg viewBox="0 0 280 200" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:180px">
+          <!-- Raw text on left transforming into structured rules on right -->
+          <!-- Left: raw chat -->
+          <rect x="20" y="25" width="100" height="14" rx="3" fill="#141210" opacity=".08"/>
+          <rect x="20" y="44" width="80" height="14" rx="3" fill="#141210" opacity=".08"/>
+          <rect x="20" y="63" width="110" height="14" rx="3" fill="#141210" opacity=".08"/>
+          <rect x="20" y="82" width="70" height="14" rx="3" fill="#141210" opacity=".08"/>
+          <rect x="20" y="101" width="95" height="14" rx="3" fill="#141210" opacity=".08"/>
+          <rect x="20" y="120" width="85" height="14" rx="3" fill="#141210" opacity=".08"/>
+          <rect x="20" y="139" width="100" height="14" rx="3" fill="#141210" opacity=".08"/>
+
+          <!-- Arrow in middle -->
+          <path d="M138 95 L165 95 M158 89 L165 95 L158 101" stroke="#C8401A" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+
+          <!-- Right: structured rule card -->
+          <rect x="172" y="50" width="100" height="100" rx="10" fill="white" stroke="#141210" stroke-width="1.5"/>
+          <rect x="182" y="62" width="40" height="6" rx="3" fill="#C8401A"/>
+          <text x="182" y="86" font-family="DM Mono" font-size="8" fill="#141210" opacity=".6">RULE</text>
+          <rect x="182" y="92" width="80" height="3" rx="1.5" fill="#141210" opacity=".75"/>
+          <rect x="182" y="100" width="60" height="3" rx="1.5" fill="#141210" opacity=".75"/>
+          <text x="182" y="118" font-family="DM Mono" font-size="8" fill="#141210" opacity=".6">OWNER</text>
+          <rect x="182" y="124" width="50" height="3" rx="1.5" fill="#1E3A8A" opacity=".75"/>
+          <text x="182" y="140" font-family="DM Mono" font-size="8" fill="#141210" opacity=".4">VERIFIED ✓</text>
+        </svg>
+      </div>
+      <div class="hw-label">Step 02</div>
+      <h3 class="hw-title">It extracts the rules</h3>
+      <p class="hw-desc">From thousands of messages, Neuron pulls out the actual rules, decisions, and policies your company runs on. Each one verified, sourced, and structured.</p>
+    </div>
+
+    <!-- Card 3: Deliver -->
+    <div class="hw-card">
+      <div class="hw-visual">
+        <svg viewBox="0 0 280 200" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:180px">
+          <!-- Central N node radiating to multiple endpoints -->
+          <!-- Connection lines -->
+          <line x1="140" y1="100" x2="55" y2="50" stroke="#141210" stroke-width="1" stroke-dasharray="3,3" opacity=".4"/>
+          <line x1="140" y1="100" x2="225" y2="50" stroke="#141210" stroke-width="1" stroke-dasharray="3,3" opacity=".4"/>
+          <line x1="140" y1="100" x2="40" y2="155" stroke="#141210" stroke-width="1" stroke-dasharray="3,3" opacity=".4"/>
+          <line x1="140" y1="100" x2="140" y2="170" stroke="#141210" stroke-width="1" stroke-dasharray="3,3" opacity=".4"/>
+          <line x1="140" y1="100" x2="240" y2="155" stroke="#141210" stroke-width="1" stroke-dasharray="3,3" opacity=".4"/>
+
+          <!-- Endpoint pills -->
+          <rect x="22" y="40" width="66" height="22" rx="11" fill="white" stroke="#141210" stroke-width="1"/>
+          <circle cx="34" cy="51" r="3" fill="#E01E5A"/>
+          <text x="42" y="55" font-family="DM Mono" font-size="9" fill="#141210">SLACK</text>
+
+          <rect x="190" y="40" width="74" height="22" rx="11" fill="white" stroke="#141210" stroke-width="1"/>
+          <circle cx="202" cy="51" r="3" fill="#4285F4"/>
+          <text x="210" y="55" font-family="DM Mono" font-size="9" fill="#141210">BROWSER</text>
+
+          <rect x="10" y="145" width="60" height="22" rx="11" fill="white" stroke="#141210" stroke-width="1"/>
+          <circle cx="22" cy="156" r="3" fill="#0a0a0a"/>
+          <text x="30" y="160" font-family="DM Mono" font-size="9" fill="#141210">CURSOR</text>
+
+          <rect x="110" y="158" width="60" height="22" rx="11" fill="white" stroke="#141210" stroke-width="1"/>
+          <circle cx="122" cy="169" r="3" fill="#C8401A"/>
+          <text x="130" y="173" font-family="DM Mono" font-size="9" fill="#141210">CLAUDE</text>
+
+          <rect x="208" y="145" width="58" height="22" rx="11" fill="white" stroke="#141210" stroke-width="1"/>
+          <circle cx="219" cy="156" r="3" fill="#5E6AD2"/>
+          <text x="227" y="160" font-family="DM Mono" font-size="9" fill="#141210">LINEAR</text>
+
+          <!-- Central N node with glow -->
+          <circle cx="140" cy="100" r="28" fill="white" opacity=".5"/>
+          <circle cx="140" cy="100" r="22" fill="#141210"/>
+          <text x="140" y="108" text-anchor="middle" font-family="Playfair Display" font-size="20" font-weight="900" fill="white">N</text>
+          <circle cx="140" cy="100" r="22" fill="none" stroke="#C8401A" stroke-width="1" opacity=".5"/>
+        </svg>
+      </div>
+      <div class="hw-label">Step 03</div>
+      <h3 class="hw-title">It serves the right answer, everywhere</h3>
+      <p class="hw-desc">Your team queries it from Slack. Your AI agents call it before they act. Neuron is the single source of truth, available wherever your work happens.</p>
+    </div>
+
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
 <!-- FEATURES — sticky left, scroll right -->
 <section id="features">
-  <div class="section-label reveal">03 — Features</div>
+  <div class="section-label reveal">04 — Features</div>
   <h2 class="section-h2 reveal reveal-delay-1">Everything your<br>company brain <em>can do.</em></h2>
   <p class="section-sub reveal reveal-delay-2">A system that watches, learns, and acts across every layer of how your company operates.</p>
 
@@ -421,7 +830,7 @@ footer{background:var(--navy);padding:64px 3rem 40px}
 <!-- BEFORE/AFTER — F: toggle -->
 <section id="beforeafter">
   <div class="ba-intro">
-    <div class="section-label reveal">04 — Before / After</div>
+    <div class="section-label reveal">05 — Before / After</div>
     <h2 class="section-h2 reveal reveal-delay-1">What changes when<br>your company has a brain.</h2>
     <p class="section-sub reveal reveal-delay-2">Toggle between states to see the real difference.</p>
   </div>
@@ -576,6 +985,12 @@ function switchBA(btn,showId,hideId){
   document.getElementById(showId).classList.add('active')
   document.getElementById(hideId).classList.remove('active')
 }
+
+// SEAMLESS LOOP: duplicate q-track children
+document.querySelectorAll('.q-track').forEach(track=>{
+  const items=[...track.children]
+  items.forEach(item=>track.appendChild(item.cloneNode(true)))
+})
 
 // JOIN
 function openJoin(){window.open('https://tally.so/r/pbJzgq','_blank')}
